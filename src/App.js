@@ -1,10 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Provider } from 'react-redux'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import configureStore from './configureStore'
 
-class App extends Component {
-  render() {
-    return <div>Hey</div>
-  }
-}
+const store = configureStore()
+
+const App = () => (
+  <Provider store={store}>
+    <Router>
+      <Route path="/" component={() => <div>hey</div>} />
+    </Router>
+  </Provider>
+)
 
 export default App

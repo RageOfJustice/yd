@@ -11,3 +11,9 @@ export const receiveAuth = createAction(RECEIVE_AUTH)
 
 export const RESTORE_TOKEN = createActionName(prefix, 'RESTORE_TOKEN')
 export const restoreToken = createAction(RESTORE_TOKEN)
+
+export const SET_TOKEN = createActionName(prefix, 'SET_TOKEN')
+export const setToken = createAction(SET_TOKEN)
+
+export const LOGOUT = createActionName(prefix, 'LOGOUT')
+export const logout = createAction(LOGOUT)

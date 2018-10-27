@@ -1,25 +1,24 @@
 import React from 'react'
-import { Provider } from 'react-redux'
-import { ThemeProvider } from 'styled-components'
+import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import configureStore from './configureStore'
 import { MainPage, TokenPage } from './pages'
-import theme from './theme'
+import { restoreToken } from './actions'
 
-const store = configureStore()
-
-const App = () => (
-  <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <Router>
-        <Switch>
-          <Route exact path="/" component={MainPage} />
-          <Route path="/token" component={TokenPage} />
-        </Switch>
-      </Router>
-    </ThemeProvider>
-  </Provider>
+const Root = () => (
+  <Router>
+    <Switch>
+      <Route exact path="/" component={MainPage} />
+      <Route path="/token" component={TokenPage} />
+    </Switch>
+  </Router>
 )
 
-export default App
+const mapDispatchToProps = {
+  restoreToken,
+}
+
+export default connect(
+  undefined,
+  mapDispatchToProps,
+)(Root)

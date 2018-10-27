@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { BigButton } from '../components'
 import { OAuthRequestURL } from '../api'
 import theme from '../theme'
+import { connect } from 'react-redux'
+import { receiveToken } from '../actions'
 
 const Container = styled.div`
   height: 100vh;
@@ -12,6 +14,10 @@ const Container = styled.div`
 `
 
 class Main extends React.Component {
+  componentDidMount() {
+    this.props.receiveToken(document.location.hash)
+  }
+
   render() {
     return (
       <Container>
@@ -21,4 +27,11 @@ class Main extends React.Component {
   }
 }
 
-export default Main
+const mapDispatchToProps = {
+  receiveToken,
+}
+
+export default connect(
+  undefined,
+  mapDispatchToProps,
+)(Main)

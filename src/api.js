@@ -1,5 +1,3 @@
-import { getAuthToken } from './repositories'
-
 const CLIENT_ID = 'c8df9f40beb1467f8097b0346e43564c'
 
 export const OAuthRequestURL = `https://oauth.yandex.ru/authorize?response_type=token&client_id=${CLIENT_ID}`
@@ -10,8 +8,7 @@ const API_VERSION = 'v1'
 
 export const createURL = suffix => `${HOST}/${API_VERSION}/${suffix}`
 
-export const getYDHeaders = () => {
-  const token = getAuthToken()
+export const getYDHeaders = token => {
   const headers = {
     Accept: 'application/json',
     'Content-type': 'application/json',

@@ -1,5 +1,5 @@
 import { all, put, takeLatest } from 'redux-saga/effects'
-import { RESTORE_TOKEN, setToken } from '../actions'
+import { REQUEST_AUTH, RESTORE_TOKEN, setToken } from '../actions'
 import { getAuthToken } from '../repositories'
 
 function* restoreTokenSaga() {
@@ -9,6 +9,11 @@ function* restoreTokenSaga() {
   }
 }
 
+function* requestAuthSaga() {}
+
 export default function*() {
-  yield all([takeLatest(RESTORE_TOKEN, restoreTokenSaga)])
+  yield all([
+    takeLatest(RESTORE_TOKEN, restoreTokenSaga),
+    takeLatest(REQUEST_AUTH, requestAuthSaga),
+  ])
 }

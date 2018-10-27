@@ -1,17 +1,24 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import configureStore from './configureStore'
-import { MainPage } from './pages'
+import { MainPage, TokenPage } from './pages'
+import theme from './theme'
 
 const store = configureStore()
 
 const App = () => (
   <Provider store={store}>
-    <Router>
-      <Route path="/" component={MainPage} />
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+          <Route path="/token" component={TokenPage} />
+        </Switch>
+      </Router>
+    </ThemeProvider>
   </Provider>
 )
 

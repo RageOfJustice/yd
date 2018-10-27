@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const BigButton = styled.a`
   outline: none !important;
-  background-color: ${({ color }) => color || '#d63031'};
+  background-color: ${({ bgColor, theme }) => bgColor || theme.colors.red};
   width: 100px;
   height: 100px;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.5);

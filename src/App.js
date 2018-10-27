@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { MainPage, TokenPage } from './pages'
+
 import { restoreToken } from './actions'
 
 const Root = () => (

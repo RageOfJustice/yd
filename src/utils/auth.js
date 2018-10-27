@@ -1,5 +1,6 @@
 export const parseHash = hash => {
   if (hash) {
+    // remove '#'
     const normalizedHash = hash.substring(1)
     return normalizedHash
       .split('&')

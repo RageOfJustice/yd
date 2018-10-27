@@ -11,10 +11,14 @@ const Container = styled.div`
 `
 
 class Main extends React.Component {
+  _handleClick = () => {
+    window.location.href = OAuthRequestURL
+  }
+
   render() {
     return (
       <Container>
-        <BigButton href={OAuthRequestURL} />
+        <BigButton onClick={this._handleClick} />
       </Container>
     )
   }

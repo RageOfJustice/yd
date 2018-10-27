@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
-const BigButton = styled.a`
+const BigButton = styled.button`
   outline: none !important;
+  cursor: pointer;
   background-color: ${({ bgColor, theme }) => bgColor || theme.colors.red};
   width: 100px;
   height: 100px;

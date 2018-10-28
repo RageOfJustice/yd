@@ -7,7 +7,7 @@ const HOST = 'cloud-api.yandex.net'
 
 const API_VERSION = 'v1'
 
-export const createURL = suffix => `${HOST}/${API_VERSION}/${suffix}`
+export const createURL = suffix => `https://${HOST}/${API_VERSION}/${suffix}`
 
 export const getYDHeaders = token => {
   const headers = {

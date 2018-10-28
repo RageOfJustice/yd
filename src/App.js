@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { MainPage, TokenPage } from './pages'
+import { MainPage, TokenPage, DiskPage } from './pages'
 import { ProtectedRouteContainer as ProtectedRoute } from './containers'
 
 const App = () => (
@@ -9,11 +9,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={MainPage} />
       <Route path="/token" component={TokenPage} />
-      <ProtectedRoute
-        path="/disk"
-        redirectTo="/"
-        component={() => <div>DISK</div>}
-      />
+      <ProtectedRoute path="/disk" redirectTo="/" component={DiskPage} />
     </Switch>
   </Router>
 )

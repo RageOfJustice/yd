@@ -38,13 +38,12 @@ class Disk extends React.Component {
             <aside className="col-3">
               <DiskInfo />
             </aside>
-            <main className="col-6">
+            <main className="col">
               {currentDirectory &&
                 !R.isEmpty(currentDirectory) && (
                   <TableOfContents data={currentDirectory} />
                 )}
             </main>
-            <aside className="col-3">preview</aside>
           </div>
         </div>
       </React.Fragment>

@@ -1,4 +1,3 @@
-import * as R from 'ramda'
 import { all, put, takeLatest, select, call } from 'redux-saga/effects'
 import {
   REQUEST_DISK_DATA,

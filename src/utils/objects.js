@@ -7,11 +7,3 @@ export const renameKeys = R.curry((keysMap, obj) =>
     R.keys(obj),
   ),
 )
-
-let id = 0
-// data - array of items
-export const createTree = R.map(({ name, ...rest }) => ({
-  ...rest,
-  filename: name,
-  id: id++,
-}))

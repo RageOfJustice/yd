@@ -1,9 +1,9 @@
 import * as R from 'ramda'
 import React from 'react'
 import { connect } from 'react-redux'
-import { Header } from '../components'
+import { Header, TableOfContents } from '../components'
 import { DiskInfoContainer as DiskInfo } from '../containers'
-import { getIsAuthorized, getMetadata } from '../selectors'
+import { getIsAuthorized, getCurrentDirectory } from '../selectors'
 import { requestDiskData, requestMetadata } from '../actions'
 
 class Disk extends React.Component {
@@ -17,6 +17,8 @@ class Disk extends React.Component {
     requestMetadata(pathname.replace(/^\/disk\/?/, ''))
   }
   render() {
+    const { currentDirectory } = this.props
+
     return (
       <React.Fragment>
         <Header />
@@ -26,7 +28,10 @@ class Disk extends React.Component {
               <DiskInfo />
             </aside>
             <main className="col-6">
-              {JSON.stringify(this.props.currentDirectory)}
+              {currentDirectory &&
+                !R.isEmpty(currentDirectory) && (
+                  <TableOfContents data={currentDirectory} />
+                )}
             </main>
             <aside className="col-3">preview</aside>
           </div>
@@ -38,7 +43,7 @@ class Disk extends React.Component {
 
 const mapStateToProps = R.applySpec({
   isAuthorized: getIsAuthorized,
-  currentDirectory: getMetadata,
+  currentDirectory: getCurrentDirectory,
 })
 
 const mapDispatchToProps = {

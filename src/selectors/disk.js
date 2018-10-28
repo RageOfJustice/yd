@@ -21,3 +21,8 @@ export const getIsFetchingMetadata = R.pipe(
   getDiskState,
   R.prop('isFetchingMetadata'),
 )
+
+export const getCurrentDirectory = R.pipe(
+  getMetadata,
+  R.path(['_embedded', 'items']),
+)

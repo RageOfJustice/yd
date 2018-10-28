@@ -8,7 +8,6 @@ import {
 } from '../actions'
 import { getAuthToken } from '../selectors'
 import { getDiskInfo, getMetadata } from '../managers'
-import { createTree } from '../utils'
 
 function* diskInfoSaga() {
   const token = yield select(getAuthToken)
@@ -26,7 +25,7 @@ function* metadataSaga({ payload: path }) {
   let data
   try {
     data = yield call(getMetadata, { token: token.accessToken, path })
-    data = R.evolve({ _embedded: { items: createTree } }, data)
+    // data = R.evolve({ _embedded: { items: createTree } }, data)
   } catch (error) {
     data = { error: true, errorObj: error }
   }

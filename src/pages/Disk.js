@@ -4,11 +4,12 @@ import { connect } from 'react-redux'
 import { Header } from '../components'
 import { DiskInfoContainer as DiskInfo } from '../containers'
 import { getIsAuthorized } from '../selectors'
-import { requestDiskData } from '../actions'
+import { requestDiskData, requestMetadata } from '../actions'
 
 class Disk extends React.Component {
   componentDidMount() {
     this.props.requestDiskData()
+    this.props.requestMetadata()
   }
   render() {
     return (
@@ -32,6 +33,7 @@ const mapStateToProps = R.applySpec({ isAuthorized: getIsAuthorized })
 
 const mapDispatchToProps = {
   requestDiskData,
+  requestMetadata,
 }
 
 export default connect(

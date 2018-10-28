@@ -16,3 +16,15 @@ export const getDiskInfo = token =>
       }),
     ),
   )
+
+export const getMetadata = ({ token, fields, path }) =>
+  axios
+    .get(
+      createURL(
+        `disk/resources?path=disk:/${path ? path : ''}${
+          fields ? '&' + fields : ''
+        }`,
+      ),
+      { headers: getYDHeaders(token) },
+    )
+    .then(R.prop('data'))

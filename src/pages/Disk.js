@@ -1,8 +1,11 @@
 import * as R from 'ramda'
 import React from 'react'
 import { connect } from 'react-redux'
-import { Header, TableOfContents } from '../components'
-import { DiskInfoContainer as DiskInfo } from '../containers'
+import { TableOfContents } from '../components'
+import {
+  DiskInfoContainer as DiskInfo,
+  HeaderContainer as Header,
+} from '../containers'
 import { getIsAuthorized, getCurrentDirectory } from '../selectors'
 import { requestDiskData, requestMetadata, requestRemoveFile } from '../actions'
 

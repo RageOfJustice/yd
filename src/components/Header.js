@@ -3,7 +3,7 @@ import { Logo } from '../assets/images'
 import { Link } from 'react-router-dom'
 import { YD_URL } from '../constants'
 
-const Header = ({ onClickLogout }) => (
+const Header = ({ logout }) => (
   <header>
     <nav className="navbar navbar-expand-md navbar-dark bg-secondary">
       <span className="navbar-brand">
@@ -21,7 +21,7 @@ const Header = ({ onClickLogout }) => (
           </a>
         </li>
         <li className="nav-item">
-          <Link onClick={onClickLogout} className="nav-link" to="/">
+          <Link onClick={logout} className="nav-link" to="/">
             Выйти
           </Link>
         </li>

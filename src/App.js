@@ -14,7 +14,11 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={MainPage} />
       <Route path="/token" component={TokenPage} />
-      <ProtectedRoute path="/disk" redirectTo="/" component={DiskPage} />
+      <ProtectedRoute
+        path={['/disk', '/disk/*']}
+        redirectTo="/"
+        component={DiskPage}
+      />
       <Redirect to="/" />
     </Switch>
   </Router>

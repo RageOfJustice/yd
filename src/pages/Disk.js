@@ -3,13 +3,18 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Header } from '../components'
 import { DiskInfoContainer as DiskInfo } from '../containers'
-import { getIsAuthorized } from '../selectors'
+import { getIsAuthorized, getMetadata } from '../selectors'
 import { requestDiskData, requestMetadata } from '../actions'
 
 class Disk extends React.Component {
   componentDidMount() {
-    this.props.requestDiskData()
-    this.props.requestMetadata()
+    const {
+      requestDiskData,
+      requestMetadata,
+      location: { pathname },
+    } = this.props
+    requestDiskData()
+    requestMetadata(pathname.replace(/^\/disk\/?/, ''))
   }
   render() {
     return (
@@ -20,7 +25,9 @@ class Disk extends React.Component {
             <aside className="col-3">
               <DiskInfo />
             </aside>
-            <main className="col-6">table of contents</main>
+            <main className="col-6">
+              {JSON.stringify(this.props.currentDirectory)}
+            </main>
             <aside className="col-3">preview</aside>
           </div>
         </div>
@@ -29,7 +36,10 @@ class Disk extends React.Component {
   }
 }
 
-const mapStateToProps = R.applySpec({ isAuthorized: getIsAuthorized })
+const mapStateToProps = R.applySpec({
+  isAuthorized: getIsAuthorized,
+  currentDirectory: getMetadata,
+})
 
 const mapDispatchToProps = {
   requestDiskData,

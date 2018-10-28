@@ -1,3 +1,4 @@
+import * as R from 'ramda'
 import { all, put, takeLatest, select, call } from 'redux-saga/effects'
 import {
   REQUEST_DISK_DATA,
@@ -7,6 +8,7 @@ import {
 } from '../actions'
 import { getAuthToken } from '../selectors'
 import { getDiskInfo, getMetadata } from '../managers'
+import { createTree } from '../utils'
 
 function* diskInfoSaga() {
   const token = yield select(getAuthToken)
@@ -19,11 +21,12 @@ function* diskInfoSaga() {
   yield put(receiveDiskData(data))
 }
 
-function* metadataSaga() {
+function* metadataSaga({ payload: path }) {
   const token = yield select(getAuthToken)
   let data
   try {
-    data = yield call(getMetadata, { token: token.accessToken })
+    data = yield call(getMetadata, { token: token.accessToken, path })
+    data = R.evolve({ _embedded: { items: createTree } }, data)
   } catch (error) {
     data = { error: true, errorObj: error }
   }

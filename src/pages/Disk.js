@@ -1,6 +1,13 @@
+import * as R from 'ramda'
 import React from 'react'
+import { connect } from 'react-redux'
+import { getIsAuthorized } from '../selectors'
+import { requestDiskData } from '../actions'
 
 class Disk extends React.Component {
+  componentDidMount() {
+    this.props.requestDiskData()
+  }
   render() {
     return (
       <div className="container-fluid">
@@ -14,4 +21,13 @@ class Disk extends React.Component {
   }
 }
 
-export default Disk
+const mapStateToProps = R.applySpec({ isAuthorized: getIsAuthorized })
+
+const mapDispatchToProps = {
+  requestDiskData,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Disk)

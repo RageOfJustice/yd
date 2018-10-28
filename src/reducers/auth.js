@@ -8,7 +8,8 @@ const token = handleActions(
     [SET_TOKEN]: (_, { payload }) => payload,
     [LOGOUT]: R.always(null),
   },
-  null,
+  // null,
+  { accessToken: 'AQAAAAAUHXKGAAVCr4xogLrcGkWnisaa7gPa3kI', expiresIn: 1 },
 )
 
 export default combineReducers({ token })

@@ -23,9 +23,9 @@ function* diskInfoSaga() {
 function* metadataSaga({ payload: path }) {
   const token = yield select(getAuthToken)
   let data
+  path = path.replace(/^\/disk\/?/, '')
   try {
     data = yield call(getMetadata, { token: token.accessToken, path })
-    // data = R.evolve({ _embedded: { items: createTree } }, data)
   } catch (error) {
     data = { error: true, errorObj: error }
   }

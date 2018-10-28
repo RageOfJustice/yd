@@ -14,8 +14,19 @@ class Disk extends React.Component {
       location: { pathname },
     } = this.props
     requestDiskData()
-    requestMetadata(pathname.replace(/^\/disk\/?/, ''))
+    requestMetadata(pathname)
   }
+
+  componentDidUpdate({ location: { pathname: oldPathname } }) {
+    const {
+      requestMetadata,
+      location: { pathname },
+    } = this.props
+    if (oldPathname !== pathname) {
+      requestMetadata(pathname)
+    }
+  }
+
   render() {
     const { currentDirectory } = this.props
 

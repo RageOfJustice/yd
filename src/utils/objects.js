@@ -7,3 +7,17 @@ export const renameKeys = R.curry((keysMap, obj) =>
     R.keys(obj),
   ),
 )
+
+// data - array of items
+export const createTree = data => {
+  let tree = {}
+
+  R.forEach(item => {
+    const path = R.pipe(
+      R.replace(/^disk:\/$/, ''),
+      R.split('/'),
+    )(item.path)
+
+    tree = R.assocPath(path, item, tree)
+  }, data)
+}

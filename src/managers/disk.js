@@ -28,3 +28,15 @@ export const getMetadata = ({ token, fields, path }) =>
       { headers: getYDHeaders(token) },
     )
     .then(R.prop('data'))
+
+export const removeFile = ({ token, fields, path }) =>
+  axios
+    .delete(
+      createURL(
+        `disk/resources?&path=disk:/${path ? path : ''}${
+          fields ? '&' + fields : ''
+        }`,
+      ),
+      { headers: getYDHeaders(token) },
+    )
+    .then(R.prop('data'))

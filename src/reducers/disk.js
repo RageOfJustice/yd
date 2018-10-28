@@ -12,7 +12,7 @@ import {
 const diskInfo = handleActions(
   {
     [RECEIVE_DISK_DATA]: (_, { payload }) => payload,
-    [LOGOUT]: R.always(null),
+    [LOGOUT]: R.always({}),
   },
   {},
 )
@@ -25,7 +25,25 @@ const isFetchingDiskInfo = handleActions(
   false,
 )
 
+const metadata = handleActions(
+  {
+    [RECEIVE_METADATA]: (_, { payload }) => payload,
+    [LOGOUT]: R.always({}),
+  },
+  {},
+)
+
+const isMetadataFetching = handleActions(
+  {
+    [RECEIVE_METADATA]: R.F,
+    [REQUEST_METADATA]: R.T,
+  },
+  false,
+)
+
 export default combineReducers({
   diskInfo,
+  metadata,
   isFetchingDiskInfo,
+  isMetadataFetching,
 })

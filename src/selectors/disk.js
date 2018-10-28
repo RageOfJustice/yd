@@ -26,3 +26,9 @@ export const getCurrentDirectory = R.pipe(
   getMetadata,
   R.path(['_embedded', 'items']),
 )
+
+export const getCurrentPath = R.pipe(
+  getMetadata,
+  R.prop('path'),
+  R.replace(/^disk:\/?/, ''),
+)

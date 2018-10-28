@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Header, TableOfContents } from '../components'
 import { DiskInfoContainer as DiskInfo } from '../containers'
 import { getIsAuthorized, getCurrentDirectory } from '../selectors'
-import { requestDiskData, requestMetadata } from '../actions'
+import { requestDiskData, requestMetadata, requestRemoveFile } from '../actions'
 
 class Disk extends React.Component {
   componentDidMount() {
@@ -28,7 +28,7 @@ class Disk extends React.Component {
   }
 
   render() {
-    const { currentDirectory } = this.props
+    const { currentDirectory, requestRemoveFile } = this.props
 
     return (
       <React.Fragment>
@@ -41,7 +41,10 @@ class Disk extends React.Component {
             <main className="col">
               {currentDirectory &&
                 !R.isEmpty(currentDirectory) && (
-                  <TableOfContents data={currentDirectory} />
+                  <TableOfContents
+                    data={currentDirectory}
+                    onClickRemove={requestRemoveFile}
+                  />
                 )}
             </main>
           </div>
@@ -59,6 +62,7 @@ const mapStateToProps = R.applySpec({
 const mapDispatchToProps = {
   requestDiskData,
   requestMetadata,
+  requestRemoveFile,
 }
 
 export default connect(

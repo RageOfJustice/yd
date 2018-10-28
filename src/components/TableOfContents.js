@@ -6,7 +6,7 @@ import moment from 'moment'
 
 class TableOfContents extends React.Component {
   render() {
-    const { data } = this.props
+    const { data, onClickRemove } = this.props
     return (
       <table className="table">
         <thead className="thead-light">
@@ -48,7 +48,11 @@ class TableOfContents extends React.Component {
                         }`}
                   </td>
                   <td>
-                    <button type="button" class="btn btn-link">
+                    <button
+                      onClick={() => onClickRemove(path)}
+                      type="button"
+                      className="btn btn-link"
+                    >
                       &times;
                     </button>
                   </td>

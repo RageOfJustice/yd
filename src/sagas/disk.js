@@ -9,7 +9,7 @@ import {
   receiveMetadata,
   receiveRemoveFile,
 } from '../actions'
-import { getAuthToken, getCurrentDirectory } from '../selectors'
+import { getAuthToken, getCurrentPath } from '../selectors'
 import { getDiskInfo, getMetadata, removeFile } from '../managers'
 
 function* diskInfoSaga() {
@@ -37,12 +37,13 @@ function* metadataSaga({ payload: path }) {
 
 function* removeFileSaga({ payload: path }) {
   const token = yield select(getAuthToken)
-  const { path: currentPath } = yield select(getCurrentDirectory)
+  const currentPath = yield select(getCurrentPath)
   let data
   path = path.replace(/^\/disk\/?/, '')
   try {
     data = yield call(removeFile, { token: token.accessToken, path })
-    yield all([put(requestDiskData(), requestMetadata(currentPath))])
+    yield put(requestDiskData())
+    yield put(requestMetadata(currentPath))
   } catch (error) {
     data = { error: true, errorObj: error }
   }

@@ -2,6 +2,8 @@ import * as R from 'ramda'
 import { handleActions } from 'redux-actions'
 import { combineReducers } from 'redux'
 import {
+  REQUEST_REMOVE_FILE,
+  RECEIVE_REMOVE_FILE,
   REQUEST_DISK_DATA,
   RECEIVE_DISK_DATA,
   REQUEST_METADATA,
@@ -41,9 +43,18 @@ const isFetchingMetadata = handleActions(
   false,
 )
 
+const isFetchingRemoveFile = handleActions(
+  {
+    [RECEIVE_REMOVE_FILE]: R.F,
+    [REQUEST_REMOVE_FILE]: R.T,
+  },
+  false,
+)
+
 export default combineReducers({
   diskInfo,
   metadata,
   isFetchingDiskInfo,
   isFetchingMetadata,
+  isFetchingRemoveFile,
 })

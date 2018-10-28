@@ -1,4 +1,10 @@
-# Get Started: 
-1) yarn or npm install
-2) yarn start or npm start
-3) open http://localhost:3000
+# Get Started:
+In root of the project
+### With Yarn:
+1. ```yarn```
+2. ```yarn start```
+3. open http://localhost:3000
+### With NPM:
+1. ```npm install```
+2. ```npm start```
+3. open http://localhost:3000

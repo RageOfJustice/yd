@@ -14,3 +14,15 @@ export const requestDiskData = createAction(REQUEST_DISK_DATA)
 
 export const RECEIVE_DISK_DATA = createActionName(prefix, 'RECEIVE_DISK_DATA')
 export const receiveDiskData = createAction(RECEIVE_DISK_DATA)
+
+export const REQUEST_REMOVE_FILE = createActionName(
+  prefix,
+  'REQUEST_REMOVE_FILE',
+)
+export const requestRemoveFile = createAction(REQUEST_REMOVE_FILE)
+
+export const RECEIVE_REMOVE_FILE = createActionName(
+  prefix,
+  'RECEIVE_REMOVE_FILE',
+)
+export const receiveRemoveFile = createAction(RECEIVE_REMOVE_FILE)

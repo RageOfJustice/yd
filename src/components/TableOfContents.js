@@ -9,16 +9,16 @@ class TableOfContents extends React.Component {
     const { data } = this.props
     return (
       <table className="table">
-        <thead>
+        <thead className="thead-light">
           <tr>
             <th scope="col">Название</th>
             <th scope="col">Размер</th>
             <th scope="col">Дата создания</th>
             <th scope="col">Дата изменения</th>
-            <th scope="col">Опции</th>
+            <th scope="col">Удалить</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="table-striped">
           {data.map(
             ({ resource_id, name, preview, size, type, modified, created }) => {
               const path = `${window.location.pathname}/${name}`
@@ -47,7 +47,11 @@ class TableOfContents extends React.Component {
                           BYTE_FORMATS.MB
                         }`}
                   </td>
-                  <td>no</td>
+                  <td>
+                    <button type="button" class="btn btn-link">
+                      &times;
+                    </button>
+                  </td>
                 </tr>
               )
             },

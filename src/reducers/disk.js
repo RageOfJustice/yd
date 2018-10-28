@@ -22,7 +22,7 @@ const isFetchingDiskInfo = handleActions(
     [RECEIVE_DISK_DATA]: R.F,
     [REQUEST_DISK_DATA]: R.T,
   },
-  null,
+  false,
 )
 
 export default combineReducers({

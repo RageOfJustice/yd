@@ -1,5 +1,7 @@
 import React from 'react'
+import { formatBytes } from '../utils'
 import styled from 'styled-components'
+import { BYTE_FORMATS } from '../constants'
 
 class DiskInfo extends React.Component {
   render() {
@@ -15,9 +17,15 @@ class DiskInfo extends React.Component {
           'Загрузка...'
         ) : (
           <ul className="list-unstyled">
-            <li>Корзина: {trashSize}</li>
-            <li>Объем диска: {totalSpace}</li>
-            <li>Используемый объем: {usedSpace}</li>
+            <li>Корзина: {`${formatBytes(trashSize)} ${BYTE_FORMATS.MB}`}</li>
+            <li>
+              Объем диска:{' '}
+              {`${formatBytes(totalSpace, BYTE_FORMATS.GB)} ${BYTE_FORMATS.GB}`}
+            </li>
+            <li>
+              Используемый объем:{' '}
+              {`${formatBytes(usedSpace)} ${BYTE_FORMATS.MB}`}
+            </li>
           </ul>
         )}
       </div>

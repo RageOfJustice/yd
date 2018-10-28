@@ -11,3 +11,13 @@ export const getIsFetchingDiskInfo = R.pipe(
   getDiskState,
   R.prop('isFetchingDiskInfo'),
 )
+
+export const getMetadata = R.pipe(
+  getDiskState,
+  R.prop('metadata'),
+)
+
+export const getIsFetchingMetadata = R.pipe(
+  getDiskState,
+  R.prop('isFetchingMetadata'),
+)

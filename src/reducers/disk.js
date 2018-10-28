@@ -33,7 +33,7 @@ const metadata = handleActions(
   {},
 )
 
-const isMetadataFetching = handleActions(
+const isFetchingMetadata = handleActions(
   {
     [RECEIVE_METADATA]: R.F,
     [REQUEST_METADATA]: R.T,
@@ -45,5 +45,5 @@ export default combineReducers({
   diskInfo,
   metadata,
   isFetchingDiskInfo,
-  isMetadataFetching,
+  isFetchingMetadata,
 })

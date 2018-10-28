@@ -12,6 +12,7 @@ export const getDiskInfo = token =>
         total_space: 'totalSpace',
         used_space: 'usedSpace',
         system_folders: 'systemFolders',
+        max_file_size: 'maxFileSize',
       }),
     ),
   )

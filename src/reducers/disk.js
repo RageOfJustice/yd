@@ -14,7 +14,7 @@ const diskInfo = handleActions(
     [RECEIVE_DISK_DATA]: (_, { payload }) => payload,
     [LOGOUT]: R.always(null),
   },
-  null,
+  {},
 )
 
 const isFetchingDiskInfo = handleActions(

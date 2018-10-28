@@ -2,6 +2,7 @@ import * as R from 'ramda'
 import React from 'react'
 import { connect } from 'react-redux'
 import { Header } from '../components'
+import { DiskInfoContainer as DiskInfo } from '../containers'
 import { getIsAuthorized } from '../selectors'
 import { requestDiskData } from '../actions'
 
@@ -15,7 +16,9 @@ class Disk extends React.Component {
         <Header />
         <div className="container-fluid">
           <div className="row">
-            <aside className="col-3">tree</aside>
+            <aside className="col-3">
+              <DiskInfo />
+            </aside>
             <main className="col-6">table of contents</main>
             <aside className="col-3">preview</aside>
           </div>
